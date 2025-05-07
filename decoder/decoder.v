@@ -148,7 +148,7 @@ always @(*) begin
                 rs_0_valid = 1'b1;
             end
             if ((!funct_0[5]) && (!funct_0[4]) && funct_0[3]) begin
-                command_0 = 3'b010; // command  1 is for R type alu ops, 2 is for jump/branch, 3 for load, 7 for store 0 is for default
+                command_0 = 3'b010; // command  1 is for R type alu ops, 2 is for branch/ jump, 3 for load, 7 for store 0 is for default
                 rt_0_valid = 1'b0;
             end else begin
                 command_0 = 3'b001;
@@ -166,9 +166,9 @@ always @(*) begin
             rt_0_valid = 1'b0;
             target_pc_0 = 32'd0;
             imm_0 = {16{instruction_0[15]},instruction_0[15:0]};
-            control_signal_0 = 6'b100000;
+            control_signal_0 = 6'b100000; // helps on R type op selection, branch, jump seperation
             sel_imm_0 = 1'b1;
-            command_0 = 3'b001; // command  1 is for R type alu ops, 2 is for jump/branch, 3 for load, 7 for store 0 is for default
+            command_0 = 3'b001; // command  1 is for R type alu ops, 2 is for branch/ jump, 3 for load, 7 for store 0 is for default
             jump_branch_predict_0 = 1'b0;
             jump_branch_predict_pc_0 = 32'd0;
         end
@@ -183,7 +183,7 @@ always @(*) begin
             imm_0 = {16{1'b0},instruction_0[15:0]};
             control_signal_0 = 6'b100000;
             sel_imm_0 = 1'b1;
-            command_0 = 3'b001; // command  1 is for R type alu ops, 2 is for jump/branch, 3 for load, 7 for store 0 is for default
+            command_0 = 3'b001; // command  1 is for R type alu ops, 2 is for branch/ jump, 3 for load, 7 for store 0 is for default
             jump_branch_predict_0 = 1'b0;
             jump_branch_predict_pc_0 = 32'd0;
         end
@@ -198,7 +198,7 @@ always @(*) begin
             imm_0 = {16{1'b0},instruction_0[15:0]};
             control_signal_0 = 6'b100100;
             sel_imm_0 = 1'b1;
-            command_0 = 3'b001; // command  1 is for R type alu ops, 2 is for jump/branch, 3 for load, 7 for store 0 is for default
+            command_0 = 3'b001; // command  1 is for R type alu ops, 2 is for branch/ jump, 3 for load, 7 for store 0 is for default
             jump_branch_predict_0 = 1'b0;
             jump_branch_predict_pc_0 = 32'd0;
         end
@@ -213,7 +213,7 @@ always @(*) begin
             imm_0 = {16{1'b0},instruction_0[15:0]};
             control_signal_0 = 6'b100101;
             sel_imm_0 = 1'b1;
-            command_0 = 3'b001; // command  1 is for R type alu ops, 2 is for jump/branch, 3 for load, 7 for store 0 is for default
+            command_0 = 3'b001; // command  1 is for R type alu ops, 2 is for branch/ jump, 3 for load, 7 for store 0 is for default
             jump_branch_predict_0 = 1'b0;
             jump_branch_predict_pc_0 = 32'd0;
         end
@@ -228,7 +228,7 @@ always @(*) begin
             imm_0 = {16{1'b0},instruction_0[15:0]};
             control_signal_0 = 6'b100110;
             sel_imm_0 = 1'b1;
-            command_0 = 3'b001; // command  1 is for R type alu ops, 2 is for jump/branch, 3 for load, 7 for store 0 is for default
+            command_0 = 3'b001; // command  1 is for R type alu ops, 2 is for branch/ jump, 3 for load, 7 for store 0 is for default
             jump_branch_predict_0 = 1'b0;
             jump_branch_predict_pc_0 = 32'd0;
         end
@@ -243,7 +243,7 @@ always @(*) begin
             imm_0 = {instruction_0[15:0],16{1'b0}};
             control_signal_0 = 6'b111111;
             sel_imm_0 = 1'b1;
-            command_0 = 3'b001; // command  1 is for R type alu ops, 2 is for jump/branch, 3 for load, 7 for store 0 is for default
+            command_0 = 3'b001; // command  1 is for R type alu ops, 2 is for branch/ jump, 3 for load, 7 for store 0 is for default
             jump_branch_predict_0 = 1'b0;
             jump_branch_predict_pc_0 = 32'd0;
         end
@@ -258,7 +258,7 @@ always @(*) begin
             imm_0 = {16{instruction_0[15]},instruction_0[15:0]};
             control_signal_0 = 6'd0;
             sel_imm_0 = 1'b1;
-            command_0 = 3'b011; // command  1 is for R type alu ops, 2 is for jump/branch, 3 for load, 7 for store 0 is for default
+            command_0 = 3'b011; // command  1 is for R type alu ops, 2 is for branch/ jump, 3 for load, 7 for store 0 is for default
             jump_branch_predict_0 = 1'b0;
             jump_branch_predict_pc_0 = 32'd0;
         end
@@ -273,7 +273,7 @@ always @(*) begin
             imm_0 = {16{instruction_0[15]},instruction_0[15:0]};
             control_signal_0 = 6'd0;
             sel_imm_0 = 1'b1;
-            command_0 = 3'b111; // command  1 is for R type alu ops, 2 is for jump/branch, 3 for load, 7 for store 0 is for default
+            command_0 = 3'b111; // command  1 is for R type alu ops, 2 is for branch/ jump, 3 for load, 7 for store 0 is for default
             jump_branch_predict_0 = 1'b0;
             jump_branch_predict_pc_0 = 32'd0;
         end
@@ -282,13 +282,13 @@ always @(*) begin
             rd_0_valid = 1'b0;
             rs_0 = instruction_0[25:21];
             rt_0 = instruction_0[20:16];
-            rs_0_valid = 1'b0;
-            rt_0_valid = 1'b0;
+            rs_0_valid = 1'b1;
+            rt_0_valid = 1'b1;
             target_pc_0 = branch_pc_0;
             imm_0 = 32'd0;
             control_signal_0 = 6'd1;
             sel_imm_0 = 1'b0;
-            command_0 = 3'b010; // command  1 is for R type alu ops, 2 is for jump/branch, 3 for load, 7 for store 0 is for default
+            command_0 = 3'b010; // command  1 is for R type alu ops, 2 is for branch/ jump, 3 for load, 7 for store 0 is for default
             jump_branch_predict_0 = 1'b0;
             jump_branch_predict_pc_0 = 32'd0;
         end
@@ -297,13 +297,13 @@ always @(*) begin
             rd_0_valid = 1'b0;
             rs_0 = instruction_0[25:21];
             rt_0 = instruction_0[20:16];
-            rs_0_valid = 1'b0;
-            rt_0_valid = 1'b0;
+            rs_0_valid = 1'b1;
+            rt_0_valid = 1'b1;
             target_pc_0 = branch_pc_0;
             imm_0 = 32'd0;
             control_signal_0 = 6'd2;
             sel_imm_0 = 1'b0;
-            command_0 = 3'b010; // command  1 is for R type alu ops, 2 is for jump/branch, 3 for load, 7 for store 0 is for default
+            command_0 = 3'b010; // command  1 is for R type alu ops, 2 is for branch/ jump, 3 for load, 7 for store 0 is for default
             jump_branch_predict_0 = 1'b0;
             jump_branch_predict_pc_0 = 32'd0;
         end
@@ -318,7 +318,7 @@ always @(*) begin
             imm_0 = {16{instruction_0[15]},instruction_0[15:0]};
             control_signal_0 = 6'b101010;
             sel_imm_0 = 1'b1;
-            command_0 = 3'b001; // command  1 is for R type alu ops, 2 is for jump/branch, 3 for load, 7 for store 0 is for default
+            command_0 = 3'b001; // command  1 is for R type alu ops, 2 is for branch/ jump, 3 for load, 7 for store 0 is for default
             jump_branch_predict_0 = 1'b0;
             jump_branch_predict_pc_0 = 32'd0;
         end
@@ -333,7 +333,7 @@ always @(*) begin
             imm_0 = {16{1'b0},instruction_0[15:0]};
             control_signal_0 =  6'b101010;
             sel_imm_0 = 1'b1;
-            command_0 = 3'b001; // command  1 is for R type alu ops, 2 is for jump/branch, 3 for load, 7 for store 0 is for default
+            command_0 = 3'b001; // command  1 is for R type alu ops, 2 is for branch/ jump, 3 for load, 7 for store 0 is for default
             jump_branch_predict_0 = 1'b0;
             jump_branch_predict_pc_0 = 32'd0;
         end
@@ -348,7 +348,7 @@ always @(*) begin
             imm_0 = 32'd0;
             control_signal_0 =  6'd3;
             sel_imm_0 = 1'b0;
-            command_0 = 3'b010; // command  1 is for R type alu ops, 2 is for jump/branch, 3 for load, 7 for store 0 is for default
+            command_0 = 3'b010; // command  1 is for R type alu ops, 2 is for branch/ jump, 3 for load, 7 for store 0 is for default
             jump_branch_predict_0 = 1'b1;
             jump_branch_predict_pc_0 = {pc_0[31:28],instruction_0[25:0],2{1'b0}};
         end
@@ -363,7 +363,7 @@ always @(*) begin
             imm_0 = pc_4_0;
             control_signal_0 =  6'd4;
             sel_imm_0 = 1'b1;
-            command_0 = 3'b010; // command  1 is for R type alu ops, 2 is for jump/branch, 3 for load, 7 for store 0 is for default
+            command_0 = 3'b010; // command  1 is for R type alu ops, 2 is for branch/ jump, 3 for load, 7 for store 0 is for default
             jump_branch_predict_0 = 1'b1;
             jump_branch_predict_pc_0 = {pc_0[31:28],instruction_0[25:0],2{1'b0}};
         end
@@ -378,7 +378,7 @@ always @(*) begin
             imm_0 = 32'd0;
             control_signal_0 =  6'd0;
             sel_imm_0 = 1'b0;
-            command_0 = 3'b000; // command  1 is for R type alu ops, 2 is for jump/branch, 3 for load, 7 for store 0 is for default
+            command_0 = 3'b000; // command  1 is for R type alu ops, 2 is for branch/ jump, 3 for load, 7 for store 0 is for default
             jump_branch_predict_0 = 1'b0;
             jump_branch_predict_pc_0 = 32'd0;
         end
@@ -413,7 +413,7 @@ always @(*) begin
                 rs_1_valid = 1'b1;
             end
             if ((!funct_1[5]) && (!funct_1[4]) && funct_1[3]) begin
-                command_1 = 3'b010; // command  1 is for R type alu ops, 2 is for jump/branch, 3 for load, 7 for store 0 is for default
+                command_1 = 3'b010; // command  1 is for R type alu ops, 2 is for branch/ jump, 3 for load, 7 for store 0 is for default
                 rt_1_valid = 1'b0;
             end else begin
                 command_1 = 3'b001;
@@ -433,7 +433,7 @@ always @(*) begin
             imm_1 = {16{instruction_1[15]},instruction_1[15:0]};
             control_signal_1 = 6'b100000;
             sel_imm_1 = 1'b1;
-            command_1 = 3'b001; // command  1 is for R type alu ops, 2 is for jump/branch, 3 for load, 7 for store 0 is for default
+            command_1 = 3'b001; // command  1 is for R type alu ops, 2 is for branch/ jump, 3 for load, 7 for store 0 is for default
             jump_branch_predict_1 = 1'b0;
             jump_branch_predict_pc_1 = 32'd0;
         end
@@ -448,7 +448,7 @@ always @(*) begin
             imm_1 = {16{1'b0},instruction_1[15:0]};
             control_signal_1 = 6'b100000;
             sel_imm_1 = 1'b1;
-            command_1 = 3'b001; // command  1 is for R type alu ops, 2 is for jump/branch, 3 for load, 7 for store 0 is for default
+            command_1 = 3'b001; // command  1 is for R type alu ops, 2 is for branch/ jump, 3 for load, 7 for store 0 is for default
             jump_branch_predict_1 = 1'b0;
             jump_branch_predict_pc_1 = 32'd0;
         end
@@ -463,7 +463,7 @@ always @(*) begin
             imm_1 = {16{1'b0},instruction_1[15:0]};
             control_signal_1 = 6'b100100;
             sel_imm_1 = 1'b1;
-            command_1 = 3'b001; // command  1 is for R type alu ops, 2 is for jump/branch, 3 for load, 7 for store 0 is for default
+            command_1 = 3'b001; // command  1 is for R type alu ops, 2 is for branch/ jump, 3 for load, 7 for store 0 is for default
             jump_branch_predict_1 = 1'b0;
             jump_branch_predict_pc_1 = 32'd0;
         end
@@ -478,7 +478,7 @@ always @(*) begin
             imm_1 = {16{1'b0},instruction_1[15:0]};
             control_signal_1 = 6'b100101;
             sel_imm_1 = 1'b1;
-            command_1 = 3'b001; // command  1 is for R type alu ops, 2 is for jump/branch, 3 for load, 7 for store 0 is for default
+            command_1 = 3'b001; // command  1 is for R type alu ops, 2 is for branch/ jump, 3 for load, 7 for store 0 is for default
             jump_branch_predict_1 = 1'b0;
             jump_branch_predict_pc_1 = 32'd0;
         end
@@ -493,7 +493,7 @@ always @(*) begin
             imm_1 = {16{1'b0},instruction_1[15:0]};
             control_signal_1 = 6'b100110;
             sel_imm_1 = 1'b1;
-            command_1 = 3'b001; // command  1 is for R type alu ops, 2 is for jump/branch, 3 for load, 7 for store 0 is for default
+            command_1 = 3'b001; // command  1 is for R type alu ops, 2 is for branch/ jump, 3 for load, 7 for store 0 is for default
             jump_branch_predict_1 = 1'b0;
             jump_branch_predict_pc_1 = 32'd0;
         end
@@ -508,7 +508,7 @@ always @(*) begin
             imm_1 = {instruction_1[15:0],16{1'b0}};
             control_signal_0 = 6'b111111;
             sel_imm_1 = 1'b1;
-            command_1 = 3'b001; // command  1 is for R type alu ops, 2 is for jump/branch, 3 for load, 7 for store 0 is for default
+            command_1 = 3'b001; // command  1 is for R type alu ops, 2 is for branch/ jump, 3 for load, 7 for store 0 is for default
             jump_branch_predict_1 = 1'b0;
             jump_branch_predict_pc_1 = 32'd0;
         end
@@ -523,7 +523,7 @@ always @(*) begin
             imm_1 = {16{instruction_1[15]},instruction_1[15:0]};
             control_signal_1 = 6'd0;
             sel_imm_1 = 1'b1;
-            command_1 = 3'b011; // command  1 is for R type alu ops, 2 is for jump/branch, 3 for load, 7 for store 0 is for default
+            command_1 = 3'b011; // command  1 is for R type alu ops, 2 is for branch/ jump, 3 for load, 7 for store 0 is for default
             jump_branch_predict_1 = 1'b0;
             jump_branch_predict_pc_1 = 32'd0;
         end
@@ -538,7 +538,7 @@ always @(*) begin
             imm_1 = {16{instruction_1[15]},instruction_1[15:0]};
             control_signal_1 = 6'd0;
             sel_imm_1 = 1'b1;
-            command_1 = 3'b111; // command  1 is for R type alu ops, 2 is for jump/branch, 3 for load, 7 for store 0 is for default
+            command_1 = 3'b111; // command  1 is for R type alu ops, 2 is for branch/ jump, 3 for load, 7 for store 0 is for default
             jump_branch_predict_1 = 1'b0;
             jump_branch_predict_pc_1 = 32'd0;
         end
@@ -553,7 +553,7 @@ always @(*) begin
             imm_1 = 32'd0;
             control_signal_1 = 6'd1;
             sel_imm_1 = 1'b0;
-            command_1 = 3'b010; // command  1 is for R type alu ops, 2 is for jump/branch, 3 for load, 7 for store 0 is for default
+            command_1 = 3'b010; // command  1 is for R type alu ops, 2 is for branch/ jump, 3 for load, 7 for store 0 is for default
             jump_branch_predict_1 = 1'b0;
             jump_branch_predict_pc_1 = 32'd0;
         end
@@ -568,7 +568,7 @@ always @(*) begin
             imm_1 = 32'd0;
             control_signal_1 = 6'd2;
             sel_imm_1 = 1'b0;
-            command_1 = 3'b010; // command  1 is for R type alu ops, 2 is for jump/branch, 3 for load, 7 for store 0 is for default
+            command_1 = 3'b010; // command  1 is for R type alu ops, 2 is for branch/ jump, 3 for load, 7 for store 0 is for default
             jump_branch_predict_1 = 1'b0;
             jump_branch_predict_pc_1 = 32'd0;
         end
@@ -583,7 +583,7 @@ always @(*) begin
             imm_1 = {16{instruction_1[15]},instruction_1[15:0]};
             control_signal_1 = 6'b101010;
             sel_imm_1 = 1'b1;
-            command_1 = 3'b001; // command  1 is for R type alu ops, 2 is for jump/branch, 3 for load, 7 for store 0 is for default
+            command_1 = 3'b001; // command  1 is for R type alu ops, 2 is for branch/ jump, 3 for load, 7 for store 0 is for default
             jump_branch_predict_1 = 1'b0;
             jump_branch_predict_pc_1 = 32'd0;
         end
@@ -598,7 +598,7 @@ always @(*) begin
             imm_1 = {16{1'b0},instruction_1[15:0]};
             control_signal_1 =  6'b101010;
             sel_imm_1 = 1'b1;
-            command_1 = 3'b001; // command  1 is for R type alu ops, 2 is for jump/branch, 3 for load, 7 for store 0 is for default
+            command_1 = 3'b001; // command  1 is for R type alu ops, 2 is for branch/ jump, 3 for load, 7 for store 0 is for default
             jump_branch_predict_1 = 1'b0;
             jump_branch_predict_pc_1 = 32'd0;
         end
@@ -613,7 +613,7 @@ always @(*) begin
             imm_1 = 32'd0;
             control_signal_1 =  6'd3;
             sel_imm_1 = 1'b0;
-            command_1 = 3'b010; // command  1 is for R type alu ops, 2 is for jump/branch, 3 for load, 7 for store 0 is for default
+            command_1 = 3'b010; // command  1 is for R type alu ops, 2 is for branch/ jump, 3 for load, 7 for store 0 is for default
             jump_branch_predict_1 = 1'b1;
             jump_branch_predict_pc_1 = {pc_1[31:28],instruction_1[25:0],2{1'b0}};
         end
@@ -628,7 +628,7 @@ always @(*) begin
             imm_1 = pc_4_1;
             control_signal_1 =  6'd4;
             sel_imm_1 = 1'b1;
-            command_1 = 3'b010; // command  1 is for R type alu ops, 2 is for jump/branch, 3 for load, 7 for store 0 is for default
+            command_1 = 3'b010; // command  1 is for R type alu ops, 2 is for branch/ jump, 3 for load, 7 for store 0 is for default
             jump_branch_predict_1 = 1'b1;
             jump_branch_predict_pc_1 = {pc_1[31:28],instruction_1[25:0],2{1'b0}};
         end
@@ -643,7 +643,7 @@ always @(*) begin
             imm_1 = 32'd0;;
             control_signal_1 =  6'd0;
             sel_imm_1 = 1'b0;
-            command_1 = 3'b000; // command  1 is for R type alu ops, 2 is for jump/branch, 3 for load, 7 for store 0 is for default
+            command_1 = 3'b000; // command  1 is for R type alu ops, 2 is for branch/ jump, 3 for load, 7 for store 0 is for default
             jump_branch_predict_1 = 1'b0;
             jump_branch_predict_pc_1 = 32'd0;
         end
@@ -677,7 +677,7 @@ always @(*) begin
                 rs_2_valid = 1'b1;
             end
             if ((!funct_2[5]) && (!funct_2[4]) && funct_2[3]) begin
-                command_2 = 3'b010; // command  1 is for R type alu ops, 2 is for jump/branch, 3 for load, 7 for store 0 is for default
+                command_2 = 3'b010; // command  1 is for R type alu ops, 2 is for branch/ jump, 3 for load, 7 for store 0 is for default
                 rt_2_valid = 1'b0;
             end else begin
                 command_2 = 3'b001;
@@ -697,7 +697,7 @@ always @(*) begin
             imm_2 = {16{instruction_2[15]},instruction_2[15:0]};
             control_signal_2 = 6'b100000;
             sel_imm_2 = 1'b1;
-            command_2 = 3'b001; // command  1 is for R type alu ops, 2 is for jump/branch, 3 for load, 7 for store 0 is for default
+            command_2 = 3'b001; // command  1 is for R type alu ops, 2 is for branch/ jump, 3 for load, 7 for store 0 is for default
             jump_branch_predict_2 = 1'b0;
             jump_branch_predict_pc_2 = 32'd0;
         end
@@ -712,7 +712,7 @@ always @(*) begin
             imm_2 = {16{1'b0},instruction_2[15:0]};
             control_signal_2 = 6'b100000;
             sel_imm_2 = 1'b1;
-            command_2 = 3'b001; // command  1 is for R type alu ops, 2 is for jump/branch, 3 for load, 7 for store 0 is for default
+            command_2 = 3'b001; // command  1 is for R type alu ops, 2 is for branch/ jump, 3 for load, 7 for store 0 is for default
             jump_branch_predict_2 = 1'b0;
             jump_branch_predict_pc_2 = 32'd0;
         end
@@ -727,7 +727,7 @@ always @(*) begin
             imm_2 = {16{1'b0},instruction_2[15:0]};
             control_signal_2 = 6'b100100;
             sel_imm_2 = 1'b1;
-            command_2 = 3'b001; // command  1 is for R type alu ops, 2 is for jump/branch, 3 for load, 7 for store 0 is for default
+            command_2 = 3'b001; // command  1 is for R type alu ops, 2 is for branch/ jump, 3 for load, 7 for store 0 is for default
             jump_branch_predict_2 = 1'b0;
             jump_branch_predict_pc_2 = 32'd0;
         end
@@ -742,7 +742,7 @@ always @(*) begin
             imm_2 = {16{1'b0},instruction_2[15:0]};
             control_signal_2 = 6'b100101;
             sel_imm_2 = 1'b1;
-            command_2 = 3'b001; // command  1 is for R type alu ops, 2 is for jump/branch, 3 for load, 7 for store 0 is for default
+            command_2 = 3'b001; // command  1 is for R type alu ops, 2 is for branch/ jump, 3 for load, 7 for store 0 is for default
             jump_branch_predict_2 = 1'b0;
             jump_branch_predict_pc_2 = 32'd0;
         end
@@ -757,7 +757,7 @@ always @(*) begin
             imm_2 = {16{1'b0},instruction_2[15:0]};
             control_signal_2 = 6'b100110;
             sel_imm_2 = 1'b1;
-            command_2 = 3'b001; // command  1 is for R type alu ops, 2 is for jump/branch, 3 for load, 7 for store 0 is for default
+            command_2 = 3'b001; // command  1 is for R type alu ops, 2 is for branch/ jump, 3 for load, 7 for store 0 is for default
             jump_branch_predict_2 = 1'b0;
             jump_branch_predict_pc_2 = 32'd0;
         end
@@ -772,7 +772,7 @@ always @(*) begin
             imm_2 = {instruction_0[15:0],16{1'b0}};
             control_signal_2 = 6'b111111;
             sel_imm_2 = 1'b1;
-            command_2 = 3'b001; // command  1 is for R type alu ops, 2 is for jump/branch, 3 for load, 7 for store 0 is for default
+            command_2 = 3'b001; // command  1 is for R type alu ops, 2 is for branch/ jump, 3 for load, 7 for store 0 is for default
             jump_branch_predict_2 = 1'b0;
             jump_branch_predict_pc_2 = 32'd0;
         end
@@ -787,7 +787,7 @@ always @(*) begin
             imm_2 = {16{instruction_2[15]},instruction_2[15:0]};
             control_signal_2 = 6'd0;
             sel_imm_2 = 1'b1;
-            command_2 = 3'b011; // command  1 is for R type alu ops, 2 is for jump/branch, 3 for load, 7 for store 0 is for default
+            command_2 = 3'b011; // command  1 is for R type alu ops, 2 is for branch/ jump, 3 for load, 7 for store 0 is for default
             jump_branch_predict_2 = 1'b0;
             jump_branch_predict_pc_2 = 32'd0;
         end
@@ -802,7 +802,7 @@ always @(*) begin
             imm_2 = {16{instruction_2[15]},instruction_2[15:0]};
             control_signal_2 = 6'd0;
             sel_imm_2 = 1'b1;
-            command_2 = 3'b111; // command  1 is for R type alu ops, 2 is for jump/branch, 3 for load, 7 for store 0 is for default
+            command_2 = 3'b111; // command  1 is for R type alu ops, 2 is for branch/ jump, 3 for load, 7 for store 0 is for default
             jump_branch_predict_2 = 1'b0;
             jump_branch_predict_pc_2 = 32'd0;
         end
@@ -817,7 +817,7 @@ always @(*) begin
             imm_2 = 32'd0;
             control_signal_2 = 6'd1;
             sel_imm_2 = 1'b0;
-            command_2 = 3'b010; // command  1 is for R type alu ops, 2 is for jump/branch, 3 for load, 7 for store 0 is for default
+            command_2 = 3'b010; // command  1 is for R type alu ops, 2 is for branch/ jump, 3 for load, 7 for store 0 is for default
             jump_branch_predict_2 = 1'b0;
             jump_branch_predict_pc_2 = 32'd0;
         end
@@ -832,7 +832,7 @@ always @(*) begin
             imm_2 = 32'd0;
             control_signal_2 = 6'd2;
             sel_imm_2 = 1'b0;
-            command_2 = 3'b010; // command  1 is for R type alu ops, 2 is for jump/branch, 3 for load, 7 for store 0 is for default
+            command_2 = 3'b010; // command  1 is for R type alu ops, 2 is for branch/ jump, 3 for load, 7 for store 0 is for default
             jump_branch_predict_2 = 1'b0;
             jump_branch_predict_pc_2 = 32'd0;
         end
@@ -847,7 +847,7 @@ always @(*) begin
             imm_2 = {16{instruction_2[15]},instruction_2[15:0]};
             control_signal_2 = 6'b101010;
             sel_imm_2 = 1'b1;
-            command_2 = 3'b001; // command  1 is for R type alu ops, 2 is for jump/branch, 3 for load, 7 for store 0 is for default
+            command_2 = 3'b001; // command  1 is for R type alu ops, 2 is for branch/ jump, 3 for load, 7 for store 0 is for default
             jump_branch_predict_2 = 1'b0;
             jump_branch_predict_pc_2 = 32'd0;
         end
@@ -862,7 +862,7 @@ always @(*) begin
             imm_2 = {16{1'b0},instruction_2[15:0]};
             control_signal_2 =  6'b101010;
             sel_imm_2 = 1'b1;
-            command_2 = 3'b001; // command  1 is for R type alu ops, 2 is for jump/branch, 3 for load, 7 for store 0 is for default
+            command_2 = 3'b001; // command  1 is for R type alu ops, 2 is for branch/ jump, 3 for load, 7 for store 0 is for default
             jump_branch_predict_2 = 1'b0;
             jump_branch_predict_pc_2 = 32'd0;
         end
@@ -877,7 +877,7 @@ always @(*) begin
             imm_2 = 32'd0;
             control_signal_2 =  6'd3;
             sel_imm_2 = 1'b0;
-            command_2 = 3'b010; // command  1 is for R type alu ops, 2 is for jump/branch, 3 for load, 7 for store 0 is for default
+            command_2 = 3'b010; // command  1 is for R type alu ops, 2 is for branch/ jump, 3 for load, 7 for store 0 is for default
             jump_branch_predict_2 = 1'b1;
             jump_branch_predict_pc_2 = {pc_2[31:28],instruction_2[25:0],2{1'b0}};
         end
@@ -892,7 +892,7 @@ always @(*) begin
             imm_2 = pc_4_2;
             control_signal_2 =  6'd4;
             sel_imm_2 = 1'b1;
-            command_2 = 3'b010; // command  1 is for R type alu ops, 2 is for jump/branch, 3 for load, 7 for store 0 is for default
+            command_2 = 3'b010; // command  1 is for R type alu ops, 2 is for branch/ jump, 3 for load, 7 for store 0 is for default
             jump_branch_predict_2 = 1'b1;
             jump_branch_predict_pc_2 = {pc_2[31:28],instruction_2[25:0],2{1'b0}};
         end
@@ -907,7 +907,7 @@ always @(*) begin
             imm_2 = 32'd0;
             control_signal_2 =  6'd0;
             sel_imm_2 = 1'b0;
-            command_2 = 3'b000; // command  1 is for R type alu ops, 2 is for jump/branch, 3 for load, 7 for store 0 is for default
+            command_2 = 3'b000; // command  1 is for R type alu ops, 2 is for branch/ jump, 3 for load, 7 for store 0 is for default
             jump_branch_predict_2 = 1'b0;
             jump_branch_predict_pc_2 = 32'd0;
         end
@@ -941,7 +941,7 @@ always @(*) begin
                 rs_3_valid = 1'b1;
             end
             if ((!funct_3[5]) && (!funct_3[4]) && funct_3[3]) begin
-                command_3 = 3'b010; // command  1 is for R type alu ops, 2 is for jump/branch, 3 for load, 7 for store 0 is for default
+                command_3 = 3'b010; // command  1 is for R type alu ops, 2 is for branch/ jump, 3 for load, 7 for store 0 is for default
                 rt_3_valid = 1'b0;
             end else begin
                 command_3 = 3'b001;
@@ -961,7 +961,7 @@ always @(*) begin
             imm_3 = {16{instruction_3[15]},instruction_3[15:0]};
             control_signal_3 = 6'b100000;
             sel_imm_3 = 1'b1;
-            command_3 = 3'b001; // command  1 is for R type alu ops, 2 is for jump/branch, 3 for load, 7 for store 0 is for default
+            command_3 = 3'b001; // command  1 is for R type alu ops, 2 is for branch/ jump, 3 for load, 7 for store 0 is for default
             jump_branch_predict_3 = 1'b0;
             jump_branch_predict_pc_3 = 32'd0;
         end
@@ -976,7 +976,7 @@ always @(*) begin
             imm_3 = {16{1'b0},instruction_3[15:0]};
             control_signal_3 = 6'b100000;
             sel_imm_3 = 1'b1;
-            command_3 = 3'b001; // command  1 is for R type alu ops, 2 is for jump/branch, 3 for load, 7 for store 0 is for default
+            command_3 = 3'b001; // command  1 is for R type alu ops, 2 is for branch/ jump, 3 for load, 7 for store 0 is for default
             jump_branch_predict_3 = 1'b0;
             jump_branch_predict_pc_3 = 32'd0;
         end
@@ -991,7 +991,7 @@ always @(*) begin
             imm_3 = {16{1'b0},instruction_3[15:0]};
             control_signal_3 = 6'b100100;
             sel_imm_3 = 1'b1;
-            command_3 = 3'b001; // command  1 is for R type alu ops, 2 is for jump/branch, 3 for load, 7 for store 0 is for default
+            command_3 = 3'b001; // command  1 is for R type alu ops, 2 is for branch/ jump, 3 for load, 7 for store 0 is for default
             jump_branch_predict_3 = 1'b0;
             jump_branch_predict_pc_3 = 32'd0;
         end
@@ -1006,7 +1006,7 @@ always @(*) begin
             imm_3 = {16{1'b0},instruction_3[15:0]};
             control_signal_3 = 6'b100101;
             sel_imm_3 = 1'b1;
-            command_3 = 3'b001; // command  1 is for R type alu ops, 2 is for jump/branch, 3 for load, 7 for store 0 is for default
+            command_3 = 3'b001; // command  1 is for R type alu ops, 2 is for branch/ jump, 3 for load, 7 for store 0 is for default
             jump_branch_predict_3 = 1'b0;
             jump_branch_predict_pc_3 = 32'd0;
         end
@@ -1021,7 +1021,7 @@ always @(*) begin
             imm_3 = {16{1'b0},instruction_3[15:0]};
             control_signal_3 = 6'b100110;
             sel_imm_3 = 1'b1;
-            command_3 = 3'b001; // command  1 is for R type alu ops, 2 is for jump/branch, 3 for load, 7 for store 0 is for default
+            command_3 = 3'b001; // command  1 is for R type alu ops, 2 is for branch/ jump, 3 for load, 7 for store 0 is for default
             jump_branch_predict_3 = 1'b0;
             jump_branch_predict_pc_3 = 32'd0;
         end
@@ -1036,7 +1036,7 @@ always @(*) begin
             imm_3 = {instruction_3[15:0],16{1'b0}};
             control_signal_3 = 6'b111111;
             sel_imm_3 = 1'b1;
-            command_3 = 3'b001; // command  1 is for R type alu ops, 2 is for jump/branch, 3 for load, 7 for store 0 is for default
+            command_3 = 3'b001; // command  1 is for R type alu ops, 2 is for branch/ jump, 3 for load, 7 for store 0 is for default
             jump_branch_predict_3 = 1'b0;
             jump_branch_predict_pc_3 = 32'd0;
         end
@@ -1051,7 +1051,7 @@ always @(*) begin
             imm_3 = {16{instruction_3[15]},instruction_3[15:0]};
             control_signal_3 = 6'd0;
             sel_imm_3 = 1'b1;
-            command_3 = 3'b011; // command  1 is for R type alu ops, 2 is for jump/branch, 3 for load, 7 for store 0 is for default
+            command_3 = 3'b011; // command  1 is for R type alu ops, 2 is for branch/ jump, 3 for load, 7 for store 0 is for default
             jump_branch_predict_3 = 1'b0;
             jump_branch_predict_pc_3 = 32'd0;
         end
@@ -1066,7 +1066,7 @@ always @(*) begin
             imm_3 = {16{instruction_3[15]},instruction_3[15:0]};
             control_signal_3 = 6'd0;
             sel_imm_3 = 1'b1;
-            command_3 = 3'b111; // command  1 is for R type alu ops, 2 is for jump/branch, 3 for load, 7 for store 0 is for default
+            command_3 = 3'b111; // command  1 is for R type alu ops, 2 is for branch/ jump, 3 for load, 7 for store 0 is for default
             jump_branch_predict_3 = 1'b0;
             jump_branch_predict_pc_3 = 32'd0;
         end
@@ -1075,13 +1075,13 @@ always @(*) begin
             rd_3_valid = 1'b0;
             rs_3 = instruction_3[25:21];
             rt_3 = instruction_3[20:16];
-            rs_3_valid = 1'b0;
-            rt_3_valid = 1'b0;
+            rs_3_valid = 1'b1;
+            rt_3_valid = 1'b1;
             target_pc_3 = branch_pc_3;
             imm_3 = 32'd0;
             control_signal_3 = 6'd1;
             sel_imm_3 = 1'b0;
-            command_3 = 3'b010; // command  1 is for R type alu ops, 2 is for jump/branch, 3 for load, 7 for store 0 is for default
+            command_3 = 3'b010; // command  1 is for R type alu ops, 2 is for branch/ jump, 3 for load, 7 for store 0 is for default
             jump_branch_predict_3 = 1'b0;
             jump_branch_predict_pc_3 = 32'd0;
         end
@@ -1090,13 +1090,13 @@ always @(*) begin
             rd_3_valid = 1'b0;
             rs_3 = instruction_3[25:21];
             rt_3 = instruction_3[20:16];
-            rs_3_valid = 1'b0;
-            rt_3_valid = 1'b0;
+            rs_3_valid = 1'b1;
+            rt_3_valid = 1'b1;
             target_pc_3 = branch_pc_3;
             imm_3 = 32'd0;
             control_signal_3 = 6'd2;
             sel_imm_3 = 1'b0;
-            command_3 = 3'b010; // command  1 is for R type alu ops, 2 is for jump/branch, 3 for load, 7 for store 0 is for default
+            command_3 = 3'b010; // command  1 is for R type alu ops, 2 is for branch/ jump, 3 for load, 7 for store 0 is for default
             jump_branch_predict_3 = 1'b0;
             jump_branch_predict_pc_3 = 32'd0;
         end
@@ -1111,7 +1111,7 @@ always @(*) begin
             imm_3 = {16{instruction_3[15]},instruction_3[15:0]};
             control_signal_3 = 6'b101010;
             sel_imm_3 = 1'b1;
-            command_3 = 3'b001; // command  1 is for R type alu ops, 2 is for jump/branch, 3 for load, 7 for store 0 is for default
+            command_3 = 3'b001; // command  1 is for R type alu ops, 2 is for branch/ jump, 3 for load, 7 for store 0 is for default
             jump_branch_predict_3 = 1'b0;
             jump_branch_predict_pc_3 = 32'd0;
         end
@@ -1126,7 +1126,7 @@ always @(*) begin
             imm_3 = {16{1'b0},instruction_3[15:0]};
             control_signal_3 =  6'b101010;
             sel_imm_3 = 1'b1;
-            command_3 = 3'b001; // command  1 is for R type alu ops, 2 is for jump/branch, 3 for load, 7 for store 0 is for default
+            command_3 = 3'b001; // command  1 is for R type alu ops, 2 is for branch/ jump, 3 for load, 7 for store 0 is for default
             jump_branch_predict_3 = 1'b0;
             jump_branch_predict_pc_3 = 32'd0;
         end
@@ -1141,7 +1141,7 @@ always @(*) begin
             imm_3 = 32'd0;
             control_signal_3 =  6'd3;
             sel_imm_3 = 1'b0;
-            command_3 = 3'b010; // command  1 is for R type alu ops, 2 is for jump/branch, 3 for load, 7 for store 0 is for default
+            command_3 = 3'b010; // command  1 is for R type alu ops, 2 is for branch/ jump, 3 for load, 7 for store 0 is for default
             jump_branch_predict_3 = 1'b1;
             jump_branch_predict_pc_3 = {pc_3[31:28],instruction_3[25:0],2{1'b0}};
         end
@@ -1156,7 +1156,7 @@ always @(*) begin
             imm_3 = pc_4_3;
             control_signal_3 =  6'd4;
             sel_imm_3 = 1'b1;
-            command_3 = 3'b010; // command  1 is for R type alu ops, 2 is for jump/branch, 3 for load, 7 for store 0 is for default
+            command_3 = 3'b010; // command  1 is for R type alu ops, 2 is for branch/ jump, 3 for load, 7 for store 0 is for default
             jump_branch_predict_3 = 1'b1;
             jump_branch_predict_pc_3 = {pc_3[31:28],instruction_3[25:0],2{1'b0}};
         end
@@ -1171,7 +1171,7 @@ always @(*) begin
             imm_3 = 32'd0;
             control_signal_3 =  6'd0;
             sel_imm_3 = 1'b0;
-            command_3 = 3'b000; // command  1 is for R type alu ops, 2 is for jump/branch, 3 for load, 7 for store 0 is for default
+            command_3 = 3'b000; // command  1 is for R type alu ops, 2 is for branch/ jump, 3 for load, 7 for store 0 is for default
             jump_branch_predict_3 = 1'b0;
             jump_branch_predict_pc_3 = 32'd0;
         end
