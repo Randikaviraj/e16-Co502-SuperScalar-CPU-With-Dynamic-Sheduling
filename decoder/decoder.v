@@ -3,6 +3,7 @@ module moduleName (
     input reset.
     input clear,
     input stall,
+    input in_valid_instruction_set,
     input [127:0] instructions,
     input [127:0] pcs,
     output reg  [4:0] rd_0,
@@ -58,6 +59,7 @@ module moduleName (
     output reg rt_1_valid,
     output reg rt_2_valid,
     output reg rt_3_valid,
+    output reg out_valid_instruction_set,
 );
 
 reg [127:0] decode_stage_reg_instructions;
@@ -111,12 +113,15 @@ always @(posedge clock) begin
     if (reset) begin
         decode_stage_reg_instructions <= 128'd0;
         decode_stage_reg_pcs <= 128'd0;
+        out_valid_instruction_set <= 1'b0;
     end else if (!stall && clear) begin
         decode_stage_reg_instructions <= 128'd0;
         decode_stage_reg_pcs <= 128'd0;
+        out_valid_instruction_set <= 1'b0;
     end else if (!stall) begin
         decode_stage_reg_instructions <= instructions;
         decode_stage_reg_pcs <= pcs;
+        out_valid_instruction_set <= in_valid_instruction_set;
     end
 end
 
