@@ -12,7 +12,7 @@ module moduleName (
     output reg [127:0] instructions,
     output [127:0] pcs,
     output busywait,
-    output reg include_buble,
+    output out_valid_instruction_set
 );
 
   
@@ -63,11 +63,13 @@ always @(posedge clock ) begin
 end
 
 reg [31:0] fetch_pc, fetch_pc_4, fetch_pc_8, fetch_pc_12;
-reg read_mem_port0,read_mem_port1;
+reg read_mem_port0,read_mem_port1,include_buble;
 wire cache_misaligen_acess;
 wire [127:0] instruction_port_0, instruction_port_1;
 
 assign cache_misaligen_acess = (pc[31:4] == pc_12[31:4]);
+
+assign out_valid_instruction_set = include_buble;
 
 always @(posedge clock ) begin
     if (reset) begin
@@ -77,7 +79,7 @@ always @(posedge clock ) begin
         fetch_pc_12 <= 32'd0;
         read_mem_port0 <= 1'b0;
         read_mem_port1 <= 1'b0;
-        include_buble <= 1'b0;
+        include_buble <= 1'b1;
     end else if (!hold && clear) begin
         fetch_pc <= 32'd0;
         fetch_pc_4 <= 32'd0;
@@ -98,7 +100,7 @@ always @(posedge clock ) begin
         fetch_pc <= pc;
         fetch_pc_4 <= pc_4;
         fetch_pc_8 <= pc_8;
-        fetch_pc_12 <= 32'd0;
+        fetch_pc_12 <= pc_12;
         read_mem_port0 <= 1;
         read_mem_port1 <= 1'b0;
         include_buble <= 1'b0;
